@@ -1,43 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kata1;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-/**
- *
- * @author Ortega
- */
 public class Person {
-    private final  String name;
-    private final  LocalDate birthdate;
     
-    
-    public Person (String name, LocalDate birthdate){
+    private final String name;
+    private final Date birthday;
+
+    public Person(String name, Date birthday) {
         this.name = name;
-        this.birthdate = birthdate;
+        this.birthday = birthday;
     }
 
-    Person() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public String getName(){
+    public String getName() {
         return name;
     }
-    
-    public LocalDate getBirthDate(){
-        return birthdate;
+
+    public Date getBirthday() {
+        return birthday;
     }
     
     public int getAge(){
-        return toYears(LocalDate.now().toEpochDay() - birthdate.toEpochDay());
+        return (int)((new Date().getTime()- birthday.getTime())/31536000000L);
     }
-
-    private int toYears(long l) {
-        return (int) l/365;
-    }
+    
 }
